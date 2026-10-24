@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тайна Хэллоуина</title>
+
+  <style>
+    body {
+      background: #10051f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 15px;
+    }
+
+    .card {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 30px 20px;
+      background: #25103b;
+      border: 2px solid #a34cff;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #7525b8;
+    }
+
+    h1 {
+      color: #ff8c00;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    button {
+      background: #ff7900;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 22px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff9d36;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>🎃 ТАЙНА ХЭЛЛОУИНА 👻</h1>
+
+    <p>Ты нашёл секретную NFC-метку...</p>
+    <p>Готов узнать, что скрывается в темноте?</p>
+
+    <button onclick="playMusic()">
+      🔊 ВКЛЮЧИТЬ МУЗЫКУ
+    </button>
+
+    <p id="message">Нажми на кнопку...</p>
+
+    <audio id="music" loop>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    function playMusic() {
+      const music = document.getElementById("music");
+
+      music.play()
+        .then(() => {
+          document.getElementById("message").textContent =
+            "👻 Квест начался! Найди следующую метку...";
+        })
+        .catch(() => {
+          document.getElementById("message").textContent =
+            "Не удалось запустить музыку. Проверь файл music.mp3.";
+        });
+    }
+  </script>
+</body>
+</html>
